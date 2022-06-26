@@ -20,12 +20,24 @@ export default {
           price: "123",
           desc: "This is an very epic item. Most notably, it is an item."
         },
-          {
+        {
           thumbnail: "https://via.placeholder.com/240x240",
           name: "TestItem2",
           price: "87",
           desc: "This is an very epic item. Most notably, it is an item."
-        }
+        },
+        {
+          thumbnail: "https://via.placeholder.com/240x240",
+          name: "TestItem",
+          price: "123",
+          desc: "This is an very epic item. Most notably, it is an item."
+        },
+        {
+          thumbnail: "https://via.placeholder.com/240x240",
+          name: "TestItem",
+          price: "123",
+          desc: "This is an very epic item. Most notably, it is an item."
+        },
       ]
     }
   }

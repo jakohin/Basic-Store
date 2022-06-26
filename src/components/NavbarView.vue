@@ -49,6 +49,10 @@ export default {
   background-color: white;
 }
 
+#navbar a:hover {
+  background-color: whitesmoke;
+}
+
 .sticky {
   position: fixed;
   top: 0;

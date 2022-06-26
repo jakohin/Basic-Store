@@ -53,6 +53,12 @@ export default {
   margin: 0;
   height: 100vh;
   width: 100vw;
+  background-color: white;
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }
 
 #app {
@@ -69,6 +75,8 @@ export default {
   align-content: space-between;
   align-items: center;
   margin: 30px 0;
+  /*background: url("assets/blob-scene-haikei.svg") no-repeat top center;*/
+  overflow: hidden;
 }
 
 a:hover {
