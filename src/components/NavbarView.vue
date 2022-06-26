@@ -1,5 +1,5 @@
 <template>
-  <div id="navbar">
+  <div :class="{sticky: isSticky}" id="navbar" ref="navbar">
     <a v-for="(url, index) in linkList" :key="index">{{url}}</a>
   </div>
 </template>
@@ -9,8 +9,20 @@ export default {
   name: "NavbarView",
   data () {
     return {
-      linkList: ["Home", "About", "Shop"]
+      linkList: ["Home", "About", "Shop"],
+      isSticky: false,
     }
+  },
+  methods: {
+    checkSticky () {
+      this.isSticky = window.pageYOffset >= this.navbarOffset
+    }
+  },
+  mounted() {
+    window.onscroll = () => {
+      this.checkSticky()
+    }
+    this.navbarOffset = this.$refs.navbar.getBoundingClientRect().top
   }
 }
 </script>
@@ -22,6 +34,9 @@ export default {
   display: flex;
   flex-flow: nowrap row;
   justify-content: space-evenly;
+  margin-left: 10%;
+  border-bottom: 1px solid black;
+  background-color: white;
 }
 
 #navbar a {
@@ -32,5 +47,10 @@ export default {
   padding: 8px;
   margin: 8px;
   background-color: white;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
 }
 </style>

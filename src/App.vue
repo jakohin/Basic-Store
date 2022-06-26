@@ -1,10 +1,13 @@
 <template>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@200&display=swap" rel="stylesheet">
   <div id="main">
     <div id="header">
       <h1>JHB</h1>
       <NavbarView></NavbarView>
     </div>
-    <div id="content">
+    <div id="content" :style="{'margin-top': contentMarginTop}">
       <ShopView></ShopView>
     </div>
     <div id="footer">
@@ -20,34 +23,52 @@
 <script>
 import ShopView from "@/components/ShopView";
 import NavbarView from "@/components/NavbarView";
+import jQuery from 'jquery'
+
+global.$ = jQuery
 
 export default {
   name: 'App',
   components: {
     NavbarView,
     ShopView
+  },
+  computed: {
+    contentMarginTop () {
+      return global.$('#navbar').outerHeight() + 30
+    }
+  },
+  data () {
+    return {
+
+    }
   }
 }
 </script>
 
 <style>
+:root {
+  font-family: 'Nunito Sans', sans-serif;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  display: grid;
 }
 
 #content {
-  grid-area: 2 / 1 / span 1 / span 5;
   display: flex;
-  flex-flow: wrap row;
   justify-content: space-evenly;
   align-content: space-between;
   align-items: center;
-  margin-top: 30px;
+  margin: 30px 0;
 }
 
 a:hover {

@@ -1,10 +1,12 @@
 <template>
   <div class="item">
     <img class="item-img" :src="item['thumbnail']">
-    <h2 class="item-name">{{ item['name'] }}</h2>
-    <div class="item-price">{{ item['price'] }}</div>
-    <div class="item-desc">
-      {{ item['desc'] }}
+    <div class="item-info">
+      <h2 class="item-name">{{ item['name'] }}</h2>
+      <div class="item-price">{{ item['price'] }}</div>
+      <div class="item-desc">
+        {{ item['desc'] }}
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +32,8 @@ export default {
   justify-content: center;
   align-content: space-between;
   border: 1px solid black;
-  padding: 8px;
+  padding: 16px 8px;
+  text-align: left;
 }
 
 .item-img {
@@ -39,9 +42,17 @@ export default {
   padding-left: 10%;
 }
 
-.item-name {
+.item-info {
+  margin-top: 16px;
   border-top: 1px solid black;
-  margin-bottom: 5px;
+}
+
+.item-info *{
+  margin-left: 8px;
+}
+
+.item-name {
+  margin: 8px 0 0 0;
 }
 
 .item-desc {
@@ -57,4 +68,5 @@ export default {
 .item-price::before{
   content: "$ "
 }
+
 </style>
