@@ -66,18 +66,20 @@ def get_app():
         except Exception as e:
             return JSONResponse({"error": f"{e}"})
 
-
     @app.put('/items/create')
-    def create_item(name: str, desc: str, price: float, stock: int, password):
-        if password == "asgdUIGERFLIjshgDkjshhkh":
-            try:
-                cur = conn.cursor()
-                cur.execute("insert into table items (name, desc, price, stock, sold)"
-                            f"values ({str(name)}, {str(desc)}, {str(desc)}, {float(price)}, {int(stock)}, 0)")
-            except Exception as e:
-                return JSONResponse({"error": f"{e}"})
-            return JSONResponse({"code": "success"})
-        return JSONResponse({"error": "Not autherized"})
+    def create_item(name: str, desc: str, price: float, stock: int):
+        # if password == "asgdUIGERFLIjshgDkjshhkh":
+        try:
+            print(name, desc, price, stock)
+            cur = conn.cursor()
+            cur.execute("insert into items (name, desc, price, stock, sold)"
+                        f"values (?, ?, ?, ?, 0)", [str(name), str(desc), float(price), int(stock)])
+            conn.commit()
+        except Exception as e:
+            print(e)
+            return JSONResponse({"error": f"{e}"})
+        return JSONResponse({"code": "success"})
+        # return JSONResponse({"error": "Not autherized"})
 
     origins = ["*"]
 

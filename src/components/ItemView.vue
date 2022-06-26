@@ -34,6 +34,8 @@ export default {
   border: 1px solid black;
   padding: 16px 8px;
   text-align: left;
+  min-width: 250px;
+  min-height: 340px;
 }
 
 .item-img {
