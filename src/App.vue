@@ -2,11 +2,11 @@
   <div id="main">
     <div id="header">
       <h1>JHB</h1>
-      <Navbar></Navbar>
+      <NavbarView></NavbarView>
     </div>
-    <Content>
+    <div id="content">
       <ShopView></ShopView>
-    </Content>
+    </div>
     <div id="footer">
       <a>Impressum</a>
       <a>Contact</a>
@@ -18,16 +18,14 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import Content from "@/components/Content";
-import Navbar from "@/components/Navbar";
+import ShopView from "@/components/ShopView";
+import NavbarView from "@/components/NavbarView";
 
 export default {
   name: 'App',
   components: {
-    Navbar,
-    Content,
-    HelloWorld
+    NavbarView,
+    ShopView
   }
 }
 </script>
@@ -40,5 +38,19 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#content {
+  grid-area: 2 / 1 / span 1 / span 5;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-evenly;
+  align-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+a:hover {
+  cursor: pointer;
 }
 </style>

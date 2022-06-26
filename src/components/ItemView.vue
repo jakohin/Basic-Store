@@ -1,10 +1,10 @@
 <template>
   <div class="item">
-    <img class="item-img" src="{{itemThumb}}">
-    <h2 class="item-name">{{itemName}}</h2>
-    <div class="item-price">{{itemPrice}}</div>
+    <img class="item-img" :src="item['thumbnail']">
+    <h2 class="item-name">{{ item['name'] }}</h2>
+    <div class="item-price">{{ item['price'] }}</div>
     <div class="item-desc">
-      {{itemDesc}}
+      {{ item['desc'] }}
     </div>
   </div>
 </template>
@@ -14,11 +14,10 @@ export default {
   name: "ItemView",
   data () {
     return {
-      itemThumb: "https://via.placeholder.com/240x240",
-      itemName: "TestItem",
-      itemPrice: "123",
-      itemDesc: "This is an very epic item. Most notably, it is an item."
     }
+  },
+  props: {
+    item: Object,
   }
 }
 </script>

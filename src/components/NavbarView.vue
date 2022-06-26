@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "Navbar",
+  name: "NavbarView",
   data () {
     return {
       linkList: ["Home", "About", "Shop"]
