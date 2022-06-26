@@ -31,15 +31,7 @@
   text-align: center;
 }
 
-#navbar a {
-  text-align: center;
-  text-decoration: none;
-  width: 30%;
-  height: auto;
-  padding: 8px;
-  margin: 8px;
-  background-color: white;
-}
+
 
 a:hover {
   background-color: whitesmoke;
@@ -64,40 +56,4 @@ a:hover {
   text-align: center;
   height: auto;
   width: 100%;
-}
-
-.item {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-content: space-between;
-  border: 1px solid black;
-  padding: 8px;
-/*   margin-bottom: 16px; */
-}
-
-.item-img {
-  height: 60%;
-  width: 80%;
-  padding-left: 10%;
-  padding-right: auto;
-}
-
-.item-name {
-  border-top: 1px solid black;
-  margin-bottom: 5px;
-}
-
-.item-desc {
-  margin-top: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid black;
-}
-
-.item-price {
-  color: #3f3f3f;
-}
-
-.item-price::before{
-  content: "$ "
 }
