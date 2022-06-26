@@ -1,6 +1,6 @@
 import sys
 
-from .app import get_app
+from backend.app import get_app
 from hypercorn.asyncio import serve
 from hypercorn.config import Config
 import asyncio
@@ -17,7 +17,9 @@ async def run_api():
 
     await serve(app=app, config=config)
 
+
+async def main():
+    await run_api()
+
 if __name__ == '__main__':
-    async def main():
-        asyncio.run(run_api())
     asyncio.run(main())

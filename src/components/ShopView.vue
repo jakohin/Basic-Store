@@ -1,6 +1,6 @@
 <template>
   <ul id="shop-view">
-    <li v-for="(item, index) in getItems()" :key="index">
+    <li v-for="(item, index) in items" :key="index">
       <ItemView :item="item"></ItemView>
     </li>
   </ul>
@@ -11,35 +11,18 @@ import ItemView from "@/components/ItemView";
 export default {
   name: "ShopView",
   components: {ItemView},
-  methods: {
-    getItems () {
-      return [
-        {
-          thumbnail: "https://via.placeholder.com/240x240",
-          name: "TestItem",
-          price: "123",
-          desc: "This is an very epic item. Most notably, it is an item."
-        },
-        {
-          thumbnail: "https://via.placeholder.com/240x240",
-          name: "TestItem2",
-          price: "87",
-          desc: "This is an very epic item. Most notably, it is an item."
-        },
-        {
-          thumbnail: "https://via.placeholder.com/240x240",
-          name: "TestItem",
-          price: "123",
-          desc: "This is an very epic item. Most notably, it is an item."
-        },
-        {
-          thumbnail: "https://via.placeholder.com/240x240",
-          name: "TestItem",
-          price: "123",
-          desc: "This is an very epic item. Most notably, it is an item."
-        },
-      ]
+  data () {
+    return {
+      items: []
     }
+  },
+  created () {
+      fetch("http://localhost:8001/items/all", {
+        method: "GET",
+        headers: {"Access-Control-Allow-Headers": "*"}
+      })
+        .then(response => response.json())
+        .then(data => this.items = data['items']).then(data => console.log(data))
   }
 }
 </script>

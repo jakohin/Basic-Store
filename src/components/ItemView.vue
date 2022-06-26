@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <img class="item-img" :src="item['thumbnail']">
+    <img class="item-img" :src="item['images']">
     <div class="item-info">
       <h2 class="item-name">{{ item['name'] }}</h2>
       <div class="item-price">{{ item['price'] }}</div>
