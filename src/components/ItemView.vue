@@ -47,6 +47,7 @@ export default {
 .item-info {
   margin-top: 16px;
   border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .item-info *{
@@ -60,7 +61,6 @@ export default {
 .item-desc {
   margin-top: 8px;
   padding-bottom: 8px;
-  border-bottom: 1px solid black;
 }
 
 .item-price {
