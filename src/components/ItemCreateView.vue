@@ -2,6 +2,7 @@
   <div class="item">
     <UploadImages class="item-img" :max="5" v-model="itemImages" @change="handleImages"/>
     <div class="item-info">
+      <label for="itemNameField"></label>
       <input ref="itemNameField"  class="item-name" v-model="itemName" placeholder="Item Name"/>
       <input ref="itemPriceField" type="number" min="0" step="any" class="item-price" v-model="itemPrice"/>
       <input ref="itemStockField" type="number" min="0" class="item-stock" v-model="itemStock"/>
@@ -100,17 +101,35 @@ export default {
   padding-left: 10%;
 }
 
+.item-img:before {
+  content: "Item Image"
+}
+
 .item-info {
+  display: flex;
+  flex-flow: column nowrap;
   margin-top: 16px;
   border-top: 1px solid black;
 }
 
 .item-info *{
   margin-left: 8px;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .item-name {
-  margin: 8px 0 0 0;
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.item-name:before {
+  content: "Item Name"
 }
 
 .item-desc {
@@ -119,11 +138,19 @@ export default {
   border-bottom: 1px solid black;
 }
 
+.item-desc:before {
+  content: "Item Description"
+}
+
 .item-price {
   color: #3f3f3f;
 }
 
-.item-price::before{
+.item-price:before {
+  content: "Price"
+}
+
+.item-price::after{
   content: "$ "
 }
 

@@ -34,7 +34,12 @@ def item_to_dict(item, images):
 
 
 def get_app():
-    conn = sq3.connect("db/db.sqlite", check_same_thread=False)
+    db_file = "db/db.sqlite"
+    try:
+        conn = sq3.connect(db_file, check_same_thread=False)
+    except sq3.OperationalError:
+        open(db_file, 'a').close()
+        conn = sq3.connect(db_file, check_same_thread=False)
 
     app = FastAPI()
 

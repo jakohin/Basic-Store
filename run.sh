@@ -1,2 +1,1 @@
-python3 backend/app.py
-npm run serve
+npm run serve & python backend/app.py && fg

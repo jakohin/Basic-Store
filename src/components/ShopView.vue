@@ -3,14 +3,16 @@
     <li v-for="(item, index) in items" :key="index">
       <ItemView :item="item"></ItemView>
     </li>
+    <ItemCreateView></ItemCreateView>
   </ul>
 </template>
 
 <script>
 import ItemView from "@/components/ItemView";
+import ItemCreateView from "@/components/ItemCreateView";
 export default {
   name: "ShopView",
-  components: {ItemView},
+  components: {ItemView, ItemCreateView},
   data () {
     return {
       items: []
