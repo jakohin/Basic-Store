@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <UploadImages class="item-img" :max="5" v-model="itemImages" @change="handleImages"/>
+    <UploadImages class="item-img" style="overflow: hidden;" :max="5" v-model="itemImages" @change="handleImages"/>
     <div class="item-info">
       <label for="itemNameField"></label>
       <input ref="itemNameField"  class="item-name" v-model="itemName" placeholder="Item Name"/>
@@ -35,6 +35,7 @@ export default {
     },
     createItem () {
       if (this.verifyFields()) {
+        console.log(this.itemImages)
         fetch("http://localhost:8001/items/create?" + new URLSearchParams({
           name: this.itemName,
           desc: this.itemDesc,
