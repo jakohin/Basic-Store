@@ -70,7 +70,7 @@ export default {
       } else {
         this.$refs.itemStockField.classList.remove("error")
       }
-      if (! this.itemPrice === 0) {
+      if (! (this.itemPrice > 0)) {
         notify({type: "warn", text: "Do you really want the item to be free?"})
       }
       return true

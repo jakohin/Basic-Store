@@ -23,9 +23,8 @@
 <script>
 import ShopView from "@/components/ShopView";
 import NavbarView from "@/components/NavbarView";
-import jQuery from 'jquery'
 
-global.$ = jQuery
+
 
 export default {
   name: 'App',
