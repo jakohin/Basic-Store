@@ -1,18 +1,18 @@
 <template>
   <ul id="shop-view">
     <li v-for="(item, index) in items" :key="index">
-      <ItemView :item="item"></ItemView>
+      <ItemCard :item="item"></ItemCard>
     </li>
-    <ItemCreateView></ItemCreateView>
+    <ItemCreateCard/>
   </ul>
 </template>
 
 <script>
-import ItemView from "@/components/ItemView";
-import ItemCreateView from "@/components/ItemCreateView";
+import ItemCard from "@/components/ItemCard";
+import ItemCreateCard from "@/components/ItemCreateCard";
 export default {
   name: "ShopView",
-  components: {ItemView, ItemCreateView},
+  components: {ItemCard, ItemCreateCard},
   data () {
     return {
       items: []

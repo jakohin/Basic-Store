@@ -15,8 +15,9 @@
 <script>
 import UploadImages from "vue-upload-drop-images"
 import { notify } from "@kyvg/vue3-notification";
+
 export default {
-  name: "ItemView",
+  name: "ItemCard",
   data () {
     return {
       itemImages: [],

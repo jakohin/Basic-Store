@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "ItemView",
+  name: "ItemCard",
   data () {
     return {
     }

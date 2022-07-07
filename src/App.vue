@@ -5,11 +5,13 @@
   <div id="main">
     <div id="header">
       <h1>JHB</h1>
-      <NavbarView></NavbarView>
+      <nav :class="{sticky: isSticky}" id="navbar" ref="navbar">
+        <router-link to="/">Home</router-link>
+        <router-link to="/about">About</router-link>
+        <router-link to="/shop">Shop</router-link>
+      </nav>
     </div>
-    <div id="content" :style="{'margin-top': contentMarginTop}">
-      <ShopView></ShopView>
-    </div>
+    <router-view id="content" :style="{'margin-top': contentMarginTop}"/>
     <div id="footer">
       <a>Impressum</a>
       <a>Contact</a>
@@ -21,26 +23,31 @@
 </template>
 
 <script>
-import ShopView from "@/components/ShopView";
-import NavbarView from "@/components/NavbarView";
+import jQuery from 'jquery'
 
-
+global.$ = jQuery
 
 export default {
-  name: 'App',
-  components: {
-    NavbarView,
-    ShopView
+  data () {
+    return {
+      isSticky: false
+    }
   },
   computed: {
     contentMarginTop () {
       return global.$('#navbar').outerHeight() + 30
     }
   },
-  data () {
-    return {
-
+  methods: {
+    checkSticky () {
+      this.isSticky = scrollY >= this.navbarOffset
     }
+  },
+  mounted() {
+    window.onscroll = () => {
+      this.checkSticky()
+    }
+    this.navbarOffset = this.$refs.navbar.getBoundingClientRect().top
   }
 }
 </script>
@@ -55,17 +62,55 @@ export default {
   background-color: white;
 }
 
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
 body {
   padding: 0;
   margin: 0;
 }
 
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#navbar {
+  max-height: 200px;
+  width: 80%;
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-evenly;
+  margin-left: 10%;
+  border-bottom: 1px solid black;
+  background-color: white;
+}
+
+#navbar a {
   text-align: center;
-  color: #2c3e50;
-  display: grid;
+  text-decoration: none;
+  width: 30%;
+  height: auto;
+  padding: 8px;
+  margin: 8px;
+  background-color: white;
+}
+
+#navbar a:hover {
+  background-color: whitesmoke;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 
 #content {
@@ -76,9 +121,5 @@ body {
   margin: 30px 0;
   /*background: url("assets/blob-scene-haikei.svg") no-repeat top center;*/
   overflow: hidden;
-}
-
-a:hover {
-  cursor: pointer;
 }
 </style>
