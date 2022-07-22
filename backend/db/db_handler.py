@@ -9,7 +9,6 @@ class DatabaseHandler (object):
             open(db_file, 'w').close()
             self.conn = sq3.connect(db_file, check_same_thread=False)
 
-
     def create_db(self):
         cur = self.conn.cursor()
         cur.execute(r"create table if not exists images("
@@ -17,13 +16,15 @@ class DatabaseHandler (object):
                     r"url text not null,"
                     r"item_id integer not null,"
                     r"foreign key (item_id) references items(id));")
+
         cur.execute(r"create table if not exists items("
                     r"id integer primary key autoincrement not null,"
                     r"name text not null,"
                     r"desc text not null,"
                     r"price float not null,"
                     r"stock integer not null,"
-                    r"sold integer not null)")
+                    r"sold integer not null,"
+                    r"release_date text not null)")
         self.conn.commit()
 
     def get_all_items(self):
@@ -37,7 +38,7 @@ class DatabaseHandler (object):
         return {"items": items}
 
     def get_item(self, item_id):
-        cur = conn.cursor()
+        cur = self.conn.cursor()
         cur.execute("Select * from items where id == ?", [int(item_id)])
         item = cur.fetchone()
         if len(item) <= 0:
@@ -46,11 +47,12 @@ class DatabaseHandler (object):
         images = cur.fetchall()
         return {item_to_dict(item, images)}
 
-    def create_item(self, name, desc, price, stock, images):
+    def create_item(self, name, desc, price, stock, images, release_date):
         cur = self.conn.cursor()
 
-        cur.execute("insert into items (name, desc, price, stock, sold)"
-                    f"values (?, ?, ?, ?, 0)", [str(name), str(desc), float(price), int(stock)])
+        cur.execute("insert into items (name, desc, price, stock, sold, release_date)"
+                    f"values (?, ?, ?, ?, 0, release_date)",
+                    [str(name), str(desc), float(price), int(stock), str(release_date)])
         self.conn.commit()
         cur.execute('select seq from sqlite_sequence where name="items"')
         item_id = cur.fetchone()

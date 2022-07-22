@@ -14,7 +14,8 @@
     "jquery": "^3.6.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
-    "vue-upload-drop-images": "^1.0.7"
+    "vue-upload-drop-images": "^1.0.7",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
